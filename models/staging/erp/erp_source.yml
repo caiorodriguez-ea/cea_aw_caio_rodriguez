@@ -7,5 +7,7 @@ sources:
     database: fea24_11
     tables:
       - name: salesreason
-
+      - name: address
+      - name: stateprovince
+      - name: countryregion
       - name: salesorderheader
