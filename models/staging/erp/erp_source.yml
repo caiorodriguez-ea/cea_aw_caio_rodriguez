@@ -1,0 +1,11 @@
+version: 2
+
+sources:
+  - name: erp
+    description: Sistema de vendas da Adventure Works.
+    schema: raw_adventure_works
+    database: fea24_11
+    tables:
+      - name: salesreason
+
+      - name: salesorderheader
