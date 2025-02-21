@@ -4,7 +4,6 @@ with
             cast(salesorderid as int) as pk_sales_order
             , cast(customerid as int) as fk_customer
             , cast(salespersonid as int) as fk_sales_person
-            , cast(territoryid as int) as fk_location
             , cast(shiptoaddressid as int) as fk_ship_address
             , cast(creditcardid as int) as fk_credit_card
             , cast(currencyrateid as int) as fk_currency_rate
