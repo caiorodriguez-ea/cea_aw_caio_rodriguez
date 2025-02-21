@@ -1,23 +1,13 @@
 with
-    sales_order_header as (
+    state_province_info as (
         select
-            cast(salesorderid as int) as pk_sales_order
-            , cast(customerid as int) as fk_customer
-            , cast(salespersonid as int) as fk_sales_person
-            , cast(territoryid as int) as fk_location
-            , cast(shiptoaddressid as int) as fk_ship_address
-            , cast(creditcardid as int) as fk_credit_card
-            , cast(currencyrateid as int) as fk_currency_rate
-            , cast(orderdate as date) as sales_order_dt
-            , cast(duedate as date) as sales_order_due_dt
-            , cast(shipdate as date) as sales_order_ship_dt
-            , cast(subtotal as numeric) as sales_order_value
-            , cast(taxamt as numeric) as sales_order_taxes_value
-            , cast(freight as numeric) as sales_order_freight_value
-            , cast(totaldue as numeric) as sales_order_total_value
-            , cast(onlineorderflag as boolean) as is_online_order
-        from {{ source('erp', 'salesorderheader') }}
+            cast(stateprovinceid as int) as pk_state_province
+            , cast(territoryid as int) as fk_territory
+            , upper(cast(countryregioncode as varchar)) as fk_country
+            , initcap(cast(name as varchar)) as state_province_nm
+            , upper(cast(stateprovincecode as varchar)) as state_province_abv
+        from {{ source('erp', 'stateprovince') }}
     )
 
 select *
-from sales_order_header
+from state_province_info
