@@ -7,6 +7,12 @@ sources:
     database: fea24_11
     tables:
       - name: salesreason
+      - name: salesperson
+      - name: person
+      - name: store
+      - name: businessentityaddress
+      - name: employee
+      - name: salesterritory
       - name: address
       - name: stateprovince
       - name: countryregion
