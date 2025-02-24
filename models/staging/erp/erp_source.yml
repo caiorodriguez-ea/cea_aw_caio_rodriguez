@@ -11,6 +11,7 @@ sources:
       - name: person
       - name: store
       - name: businessentityaddress
+      - name: customer
       - name: employee
       - name: salesterritory
       - name: address

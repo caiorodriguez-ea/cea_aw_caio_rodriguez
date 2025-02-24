@@ -30,9 +30,6 @@ with
         select
             pk_person
             , person_type
-            , person_first_name
-            , person_middle_name
-            , person_last_name
             , concat_ws(' ', person_first_name, person_middle_name, person_last_name) as full_name
             , person_title
         from coalesce_required_columns
