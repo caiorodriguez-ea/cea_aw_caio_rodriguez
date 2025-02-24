@@ -12,6 +12,7 @@ sources:
       - name: store
       - name: businessentityaddress
       - name: customer
+      - name: creditcard
       - name: employee
       - name: salesterritory
       - name: address
