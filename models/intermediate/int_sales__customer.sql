@@ -2,19 +2,19 @@ with
     customer_info as (
         select *
         from {{ ref('stg_sales__customer') }}
-    ),
+    )
 
-    person_info as (
+    , person_info as (
         select *
         from {{ ref('stg_erp__person') }}
-    ),
+    )
 
-    store_info as (
+    , store_info as (
         select *
         from {{ ref('stg_erp__store') }}
-    ),
+    )
 
-    enriched_customer_info as (
+    , enriched_customer_info as (
         select
             customer_info.pk_customer
             , coalesce(person_info.full_name, store_info.store_nm) as customer_nm

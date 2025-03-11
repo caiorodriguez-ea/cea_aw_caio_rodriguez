@@ -2,24 +2,24 @@ with
     sales_person_ids as (
         select *
         from {{ ref('stg_erp__sales_person') }}
-    ),
+    )
 
-    employee_info as (
+    , employee_info as (
         select *
         from {{ ref('stg_erp__employee') }}
-    ),
+    )
 
-    person_info as (
+    , person_info as (
         select *
         from {{ ref('stg_erp__person') }}
-    ),
+    )
 
-    sales_territory_info as (
+    , sales_territory_info as (
         select *
         from {{ ref('stg_erp__sales_territory') }}
-    ),
+    )
 
-    enriched_sales_person as (
+    , enriched_sales_person as (
         select
             sales_person_ids.pk_sales_person
             , person_info.full_name
