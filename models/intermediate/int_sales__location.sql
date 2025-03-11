@@ -2,24 +2,24 @@ with
     city_info as (
         select *
         from {{ ref('stg_erp__address') }}
-    ),
+    )
 
-    state_province_info as (
+    , state_province_info as (
         select *
         from {{ ref('stg_erp__state_province') }}
-    ),
+    )
 
-    territory_info as (
+    , territory_info as (
         select *
         from {{ ref('stg_erp__sales_territory') }}
-    ),
+    )
 
-    country_info as (
+    , country_info as (
         select *
         from {{ ref('stg_erp__country') }}
-    ),
+    )
 
-    enriched_location as (
+    , enriched_location as (
         select 
             city_info.pk_address
             , city_info.city_nm
