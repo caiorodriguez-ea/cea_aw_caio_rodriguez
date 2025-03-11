@@ -7,15 +7,22 @@ sources:
     database: fea24_11
     tables:
       - name: salesreason
+      - name: salesorderheadersalesreason
       - name: salesperson
       - name: person
       - name: store
+      - name: product
+      - name: productmodel
+      - name: productsubcategory
+      - name: productcategory
       - name: businessentityaddress
       - name: customer
       - name: creditcard
+      - name: salesorderdetail
       - name: employee
       - name: salesterritory
       - name: address
       - name: stateprovince
       - name: countryregion
       - name: salesorderheader
+      - name: currencyrate
