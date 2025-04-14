@@ -1,8 +1,7 @@
 with
     dim_location_sk_gen as (
-        select
-            {{ dbt_utils.generate_surrogate_key(['pk_address']) }} as sk_address
-            , pk_address
+        select distinct
+            sk_location
             , city_nm
             , state_province_nm
             , territory_nm

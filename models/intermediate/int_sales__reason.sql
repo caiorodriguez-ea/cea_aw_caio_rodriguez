@@ -11,7 +11,8 @@ with
 
     , sales_order_sales_reason_joined as (
         select
-            sales_order_connection_info.fk_sales_order
+            sales_reason_info.pk_sales_reason
+            , sales_order_connection_info.fk_sales_order
             , sales_reason_info.sales_reason_nm
             , sales_reason_info.sales_reason_type
         from sales_order_connection_info
