@@ -4,11 +4,6 @@ with
         from {{ ref('int_sales__order') }}
     )
 
-    , dim_location_info as (
-        select *
-        from {{ ref('dim_location') }}
-    )
-
     , dim_product_info as (
         select *
         from {{ ref('dim_product') }}
@@ -24,7 +19,7 @@ with
             {{ dbt_utils.generate_surrogate_key(['pk_sales_order']) }} as sk_sales_order
             , dim_product_info.sk_product
             , dim_sales_person_info.sk_sales_person
-            , dim_location_info.sk_address as sk_ship_address
+            , enriched_sales_order.sk_location
             , enriched_sales_order.sales_order_dt
             , enriched_sales_order.sales_order_due_dt
             , enriched_sales_order.sales_order_ship_dt
@@ -42,7 +37,6 @@ with
             , enriched_sales_order.order_status
             , enriched_sales_order.is_online_order
         from enriched_sales_order
-        left join dim_location_info on enriched_sales_order.fk_ship_address = dim_location_info.pk_address
         left join dim_product_info on enriched_sales_order.fk_product = dim_product_info.pk_product
         left join dim_sales_person_info on enriched_sales_order.fk_sales_person = dim_sales_person_info.pk_sales_person
     )

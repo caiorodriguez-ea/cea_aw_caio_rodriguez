@@ -33,5 +33,17 @@ with
         left join country_info on state_province_info.fk_country = country_info.pk_country
     )
 
+    , location_sk_gen as (
+        select
+            {{ dbt_utils.generate_surrogate_key(['city_nm', 'state_province_nm', 'territory_nm', 'country_nm', 'region_nm']) }} as sk_location
+            , pk_address
+            , city_nm
+            , state_province_nm
+            , territory_nm
+            , country_nm
+            , region_nm
+        from enriched_location
+    )
+
 select *
-from enriched_location
+from location_sk_gen

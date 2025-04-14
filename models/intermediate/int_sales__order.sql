@@ -19,11 +19,16 @@ with
         from {{ ref('int_sales__customer') }}
     )
 
+    , location_info as (
+        select *
+        from {{ ref('int_sales__location') }}
+    )
+
     , sales_order_header_joined as (
         select
             sales_order_header_info.pk_sales_order
             , sales_order_header_info.fk_sales_person
-            , sales_order_header_info.fk_ship_address
+            , location_info.sk_location
             , sales_order_details.fk_product
             , sales_order_header_info.sales_order_dt
             , sales_order_header_info.sales_order_due_dt
@@ -43,6 +48,7 @@ with
         inner join sales_order_details on sales_order_header_info.pk_sales_order = sales_order_details.fk_sales_order
         left join credit_card_type_info on sales_order_header_info.fk_credit_card = credit_card_type_info.pk_credit_card
         left join sales_customer_info on sales_order_header_info.fk_customer = sales_customer_info.pk_customer
+        left join location_info on sales_order_header_info.fk_ship_address = location_info.pk_address
     ),
 
     sales_order_header_metrics as (
@@ -50,7 +56,7 @@ with
             pk_sales_order
             , fk_product
             , fk_sales_person
-            , fk_ship_address
+            , sk_location
             , sales_order_dt
             , sales_order_due_dt
             , sales_order_ship_dt

@@ -1,6 +1,6 @@
 with
     dim_product_sk_gen as (
-        select 
+        select
             {{ dbt_utils.generate_surrogate_key(['pk_product']) }} as sk_product
             , pk_product
             , product_nm
