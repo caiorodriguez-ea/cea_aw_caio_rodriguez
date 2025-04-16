@@ -1,0 +1,50 @@
+version: 2
+
+models:
+  - name: fct_sales_order
+    description: >
+      This model builds the sales order fact table, combining sales order headers, order details, 
+      customer, credit card, and location information. It contains detailed financial and operational 
+      metrics for each sales transaction.
+    columns:
+      - name: sk_sales_order_product
+        description: "Surrogate key identifying the unique combination of sales order and product."
+        tests:
+          - not_null
+          - unique
+      - name: pk_sales_order
+        description: "Primary key identifying the sales order record from the ERP system."
+      - name: fk_sales_person
+        description: "Foreign key referring to the salesperson responsible for the sales order."
+      - name: sk_location
+        description: "Surrogate key referring to the customer's location."
+      - name: fk_product
+        description: "Foreign key referring to the product sold."
+      - name: sales_order_dt
+        description: "Date when the sales order was created."
+      - name: sales_order_due_dt
+        description: "Due date for the sales order delivery."
+      - name: sales_order_ship_dt
+        description: "Date when the sales order was shipped."
+      - name: customer_nm
+        description: "Name of the customer who placed the order."
+      - name: card_type_nm
+        description: "Type of credit card used for the purchase."
+      - name: order_qtd
+        description: "Quantity of items ordered."
+      - name: unit_price
+        description: "Unit price of the product at the time of the order."
+      - name: unit_price_discount
+        description: "Discount applied to the unit price."
+      - name: sales_order_value
+        description: "Gross value of the sales order before taxes and freight."
+      - name: sales_order_taxes_value
+        description: "Total value of taxes applied to the sales order."
+      - name: sales_order_freight_value
+        description: "Freight charges associated with the sales order."
+      - name: sales_order_total_value
+        description: "Total value of the sales order after taxes and freight."
+      - name: order_status
+        description: "Status code of the order (e.g., In Progress, Completed)."
+      - name: is_online_order
+        description: "Flag indicating if the order was placed online."

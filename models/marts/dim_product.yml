@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: dim_product
+    description: >
+      This model builds the product dimension by enriching product information with its subcategory, 
+      category, and model details. A surrogate key is generated based on the primary key of the product 
+      to uniquely identify each product record.
+    columns:
+      - name: sk_product
+        description: "Surrogate key generated to uniquely identify a product based on its primary key."
+        tests:
+          - not_null
+          - unique
+      - name: pk_product
+        description: "Primary key of the original product record from the ERP system."
+      - name: product_nm
+        description: "Name of the product."
+      - name: product_subcategory_nm
+        description: "Name of the product subcategory the product belongs to."
+      - name: product_category_nm
+        description: "Name of the product category the product belongs to."
+      - name: product_model_nm
+        description: "Name of the product model associated with the product."

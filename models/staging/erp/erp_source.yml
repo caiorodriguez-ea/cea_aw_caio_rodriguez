@@ -2,10 +2,138 @@ version: 2
 
 sources:
   - name: erp
-    description: Sistema de vendas da Adventure Works.
+    description: Adventure Works sales system.
     schema: raw_adventure_works
     database: fea24_11
     tables:
       - name: salesreason
+        columns:
+          - name: salesreasonid
+            tests:
+              - not_null
+              - unique
+
+      - name: salesorderheadersalesreason
+        tests:
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns: [salesorderid, salesreasonid]
+        columns:
+          - name: salesorderid
+            tests: [not_null]
+          - name: salesreasonid
+            tests: [not_null]
+
+      - name: salesperson
+        columns:
+          - name: businessentityid
+            tests:
+              - not_null
+              - unique
+
+      - name: person
+        columns:
+          - name: businessentityid
+            tests:
+              - not_null
+              - unique
+
+      - name: store
+        columns:
+          - name: businessentityid
+            tests:
+              - not_null
+              - unique
+
+      - name: product
+        columns:
+          - name: productid
+            tests:
+              - not_null
+              - unique
+
+      - name: productmodel
+        columns:
+          - name: productmodelid
+            tests:
+              - not_null
+              - unique
+
+      - name: productsubcategory
+        columns:
+          - name: productsubcategoryid
+            tests:
+              - not_null
+              - unique
+
+      - name: productcategory
+        columns:
+          - name: productcategoryid
+            tests:
+              - not_null
+              - unique
+
+      - name: customer
+        columns:
+          - name: customerid
+            tests:
+              - not_null
+              - unique
+
+      - name: creditcard
+        columns:
+          - name: creditcardid
+            tests:
+              - not_null
+              - unique
+
+      - name: salesorderdetail
+        tests:
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns: [salesorderid, salesorderdetailid]
+        columns:
+          - name: salesorderid
+            tests: [not_null]
+          - name: salesorderdetailid
+            tests: [not_null]
+
+      - name: employee
+        columns:
+          - name: businessentityid
+            tests:
+              - not_null
+              - unique
+
+      - name: salesterritory
+        columns:
+          - name: territoryid
+            tests:
+              - not_null
+              - unique
+
+      - name: address
+        columns:
+          - name: addressid
+            tests:
+              - not_null
+              - unique
+
+      - name: stateprovince
+        columns:
+          - name: stateprovinceid
+            tests:
+              - not_null
+              - unique
+
+      - name: countryregion
+        columns:
+          - name: countryregioncode
+            tests:
+              - not_null
+              - unique
 
       - name: salesorderheader
+        columns:
+          - name: salesorderid
+            tests:
+              - not_null
+              - unique

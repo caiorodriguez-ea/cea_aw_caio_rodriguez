@@ -1,0 +1,6 @@
+version: 2
+
+models:
+  - name: int_sales__order
+    data_tests::
+      - name: tst_gross_total_2011
