@@ -14,11 +14,6 @@ with
         from {{ ref('stg_erp__person') }}
     )
 
-    , sales_territory_info as (
-        select *
-        from {{ ref('stg_erp__sales_territory') }}
-    )
-
     , enriched_sales_person as (
         select
             sales_person_ids.pk_sales_person
