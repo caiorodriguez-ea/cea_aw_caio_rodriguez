@@ -16,7 +16,8 @@ with
 
     , sales_order_join_dims as (
         select
-            {{ dbt_utils.generate_surrogate_key(['pk_sales_order']) }} as sk_sales_order
+            {{ dbt_utils.generate_surrogate_key(['pk_sales_order', 'fk_product']) }} as sk_sales_order_product
+            , {{ dbt_utils.generate_surrogate_key(['pk_sales_order']) }} as sk_sales_order
             , dim_product_info.sk_product
             , dim_sales_person_info.sk_sales_person
             , enriched_sales_order.sk_location

@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: dim_location
+    description: >
+      This model builds a location dimension by enriching address data from city, state/province, 
+      sales territory, and country information. It generates a surrogate key based on the 
+      combination of city, state, territory, country, and region names to uniquely identify each location.
+    columns:
+      - name: sk_location
+        description: "Surrogate key generated to uniquely identify a location based on city, state, territory, country, and region."
+        tests:
+          - not_null
+          - unique
+      - name: pk_address
+        description: "Primary key of the original address record from the ERP system."
+      - name: city_nm
+        description: "Name of the city for the location."
+      - name: state_province_nm
+        description: "Name of the state or province associated with the location."
+      - name: territory_nm
+        description: "Sales territory associated with the location."
+      - name: country_nm
+        description: "Country name associated with the location."
+      - name: region_nm
+        description: "Region name associated with the sales territory."

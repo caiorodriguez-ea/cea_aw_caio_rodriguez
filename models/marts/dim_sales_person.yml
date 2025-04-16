@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: dim_sales_person
+    description: >
+      This model builds the sales person dimension, enriching basic sales person identifiers with 
+      personal and job-related details such as full name, job title, and salaried status.
+    columns:
+      - name: sk_sales_person
+        description: "Surrogate key uniquely identifying the sales person."
+        tests:
+          - not_null
+          - unique
+      - name: pk_sales_person
+        description: "Primary key identifying the sales person in the ERP system."
+      - name: full_name
+        description: "Full name of the sales person."
+      - name: job_title
+        description: "Job title of the sales person."
+      - name: is_salaried
+        description: "Indicates if the sales person is salaried (true/false)."
